@@ -2,47 +2,44 @@ import './style.css';
 
 const projects = [
   {
-    type: 'Distributed Systems',
-    title: 'Realtime Collaboration Engine',
+    type: 'Game Development',
+    title: 'Turn Based RPG Prototype',
     summary:
-      'Built a conflict-free collaborative editor with optimistic updates, eventual consistency, and resilient websocket reconnection.',
-    stack: ['TypeScript', 'WebSocket', 'Redis', 'PostgreSQL'],
+      'Designed and developed a 2–4 player multiplayer turn-based RPG prototype in Roblox Studio using Lua, created to explore scalable client-server networking and modular game architecture while establishing a fun experience to play with friends or other community members.',
+    stack: ['Lua', 'Roblox Studio'],
     impact: '99.95% session uptime across semester demos',
   },
   {
-    type: 'AI Tooling',
-    title: 'Code Review Assistant',
+    type: 'Software Product Development',
+    title: 'AI-Powered Food Pantry Inventory & Management Platform',
     summary:
       'Designed an analysis pipeline that flags risky diffs, labels security concerns, and generates actionable feedback for student teams.',
     stack: ['Python', 'FastAPI', 'OpenAI API', 'Docker'],
     impact: 'Reduced manual review time by 42%',
   },
   {
-    type: 'Systems Programming',
-    title: 'Lightweight CI Runner',
+    type: 'Class Project',
+    title: 'Weighted Graph CLI Route Planner in C++',
     summary:
-      'Implemented a minimal build orchestrator with isolated job execution, artifact caching, and log streaming for classroom deployments.',
-    stack: ['Go', 'Linux', 'GitHub Actions', 'SQLite'],
+      'Designed and implemented a weighted graph data structure in C++ to support efficient pathfinding and real-world route-planning experiments, using unordered_map for average O(1) vertex and edge lookup. ',
+    stack: ['C++', 'Linux'],
     impact: '3.2x faster pipeline execution on average',
   },
 ];
 
 const skills = [
   'Algorithms and Data Structures',
-  'Backend API Design',
-  'Cloud and DevOps Automation',
+  'Agile Software Development',
   'Secure Coding Practices',
-  'Database Performance Tuning',
   'Observability and Monitoring',
-  'Test-Driven Development',
   'Technical Writing',
 ];
 
 const timeline = [
   {
     period: 'Now',
-    role: 'Software Engineering Student',
-    details: 'Building production-style projects, with emphasis on systems reliability and developer experience.',
+    role: 'Computer Science New Grad',
+    details: 'Focusing on personal projects and self-taught learning to deepen practical CS skills.',
   },
   {
     period: 'Recent',
@@ -56,57 +53,84 @@ const timeline = [
   },
 ];
 
+const stats = [
+  { label: 'Problem Solving', value: 88 },
+  { label: 'Backend Systems', value: 84 },
+  { label: 'Frontend Craft', value: 76 },
+  { label: 'DevOps', value: 72 },
+];
+
 const app = document.querySelector('#app');
 
 app.innerHTML = `
   <main class="page-shell" aria-label="Computer Science Portfolio">
-    <section class="hero reveal">
-      <p class="eyebrow">Computer Science + Software Engineering</p>
-      <div class="hero-copy">
-        <div>
-          <h1>Engineering software that is fast, stable, and human-centered.</h1>
+    <header class="masthead reveal">
+      <p class="game-title">Software Battle Arena</p>
+      <p class="game-subtitle">Trainer: Liam Kaznelson | Class: Computer Science New Grad</p>
+    </header>
+
+    <section class="battlefield reveal" aria-label="Battle Style Intro">
+      <article class="status-card status-opponent">
+        <p class="status-name">Portfolio Challenge</p>
+        <p class="status-level">LV. 24</p>
+        <div class="hp-wrap" role="presentation">
+          <span>HP</span>
+          <div class="hp-meter"><i style="width: 82%"></i></div>
         </div>
-        <p class="lede">
-          I design and build dependable systems across the stack, from algorithmic problem solving
-          to deploy-ready web platforms. This portfolio highlights projects where architecture,
-          performance, and product clarity intersect.
-        </p>
+      </article>
+
+      <div class="arena">
+        <div class="sprite sprite-opponent" aria-hidden="true"></div>
+        <div class="sprite sprite-player" aria-hidden="true"></div>
       </div>
-      <div class="hero-meta">
-        <p><span>Focus</span> Backend systems, full-stack apps, developer tooling</p>
-        <p><span>Location</span> Replace with your city or remote preference</p>
-      </div>
-      <div class="hero-actions">
-        <a class="button button-primary" href="#projects">View projects</a>
-        <a class="button button-secondary" href="mailto:hello@example.com">hello@example.com</a>
+
+      <article class="status-card status-player">
+        <p class="status-name">Liam.dev</p>
+        <p class="status-level">LV. 22</p>
+        <div class="hp-wrap" role="presentation">
+          <span>HP</span>
+          <div class="hp-meter"><i style="width: 96%"></i></div>
+        </div>
+        <p class="exp-label">XP to next level: 120</p>
+      </article>
+
+      <div class="dialogue-box">
+        <p>Liam.dev used BUILD RELIABLE SYSTEMS. It's super effective.</p>
+        <div class="command-grid">
+          <a class="command-btn" href="#projects">Projects</a>
+          <a class="command-btn" href="#moves">Skills</a>
+          <a class="command-btn" href="#journey">Journey</a>
+          <a class="command-btn" href="#contact">Contact</a>
+        </div>
       </div>
     </section>
 
-    <section class="signal-panel reveal" aria-label="Engineering Snapshot">
-      <article>
-        <p class="signal-label">Primary Languages</p>
-        <p class="signal-value">TypeScript, Python, Go, Java</p>
-      </article>
-      <article>
-        <p class="signal-label">Current Interest</p>
-        <p class="signal-value">Reliable distributed application design</p>
-      </article>
-      <article>
-        <p class="signal-label">Availability</p>
-        <p class="signal-value">Open to internships and junior SWE roles</p>
-      </article>
+    <section class="moves-panel reveal" id="moves" aria-label="Core Moves">
+      <p class="panel-title">Moveset</p>
+      <div class="moves-grid">
+        ${skills
+          .map(
+            (item, idx) => `
+              <article class="move-card">
+                <p class="move-name">${item}</p>
+                <p class="move-type">Type ${idx % 2 === 0 ? 'Logic' : 'Build'}</p>
+              </article>
+            `,
+          )
+          .join('')}
+      </div>
     </section>
 
     <section class="section-head reveal" id="projects">
-      <p class="eyebrow">Selected Work</p>
-      <h2>Projects with measurable engineering outcomes.</h2>
+      <p class="eyebrow">Pokedex: Selected Builds</p>
+      <h2>Each project entry includes stack, behavior, and measurable impact.</h2>
     </section>
 
-    <section class="projects-grid">
+    <section class="projects-grid reveal">
       ${projects
         .map(
           (item) => `
-            <article class="card reveal">
+            <article class="card">
               <p class="card-eyebrow">${item.type}</p>
               <h2>${item.title}</h2>
               <p>${item.summary}</p>
@@ -120,17 +144,25 @@ app.innerHTML = `
         .join('')}
     </section>
 
-    <section class="skills-timeline">
-      <article class="skills-panel reveal">
-        <p class="eyebrow">Core Strengths</p>
-        <h2>Practical CS foundations applied to real products.</h2>
-        <div class="skill-cloud" aria-label="Skills">
-          ${skills.map((item) => `<span>${item}</span>`).join('')}
-        </div>
+    <section class="trainer-grid">
+      <article class="stats-panel reveal">
+        <p class="panel-title">Trainer Stats</p>
+        <ul>
+          ${stats
+            .map(
+              (stat) => `
+                <li>
+                  <p>${stat.label}</p>
+                  <div class="stat-meter"><i style="width: ${stat.value}%"></i></div>
+                </li>
+              `,
+            )
+            .join('')}
+        </ul>
       </article>
 
-      <article class="timeline-panel reveal">
-        <p class="eyebrow">Engineering Journey</p>
+      <article class="timeline-panel reveal" id="journey">
+        <p class="panel-title">Trainer Log</p>
         <ul>
           ${timeline
             .map(
@@ -147,10 +179,15 @@ app.innerHTML = `
       </article>
     </section>
 
+    <section class="contact-banner reveal" id="contact">
+      <p>Open to internships and junior software engineering roles.</p>
+      <a href="mailto:hello@example.com">Send challenge request</a>
+    </section>
+
     <footer class="footer reveal" id="contact">
       <div>
-        <p class="eyebrow">Contact</p>
-        <p>Interested in collaborating on systems, tooling, or full-stack products.</p>
+        <p class="eyebrow">Trainer Network</p>
+        <p>Let us build resilient products and playful experiences together.</p>
       </div>
       <div class="footer-links">
         <a href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
