@@ -183,6 +183,13 @@ a {
   background: var(--panel);
 }
 
+.sprite-art {
+  object-fit: contain;
+  object-position: center;
+  background: transparent;
+  padding: 10px;
+}
+
 .sprite::before {
   content: '';
   position: absolute;
@@ -196,7 +203,13 @@ a {
   right: 12%;
   transform: scale(0.9);
   border-radius: 16px 16px 16px 30px;
-  animation: bob 1800ms ease-in-out infinite;
+  animation:
+    battleEntrance 700ms cubic-bezier(0.2, 0.85, 0.2, 1) both,
+    bob 1800ms ease-in-out 700ms infinite;
+}
+
+.sprite-opponent.sprite-art::before {
+  content: none;
 }
 
 .sprite-player {
@@ -218,6 +231,14 @@ a {
   margin: 0;
   font: 700 0.86rem/1.55 'Press Start 2P', 'IBM Plex Mono', monospace;
   color: var(--ink);
+}
+
+.battle-name {
+  color: var(--accent-2);
+}
+
+.attack-name {
+  color: var(--accent);
 }
 
 .command-grid {
@@ -244,6 +265,10 @@ a {
   transform: translateY(-1px);
 }
 
+.command-btn-primary {
+  background: linear-gradient(180deg, #fff7c9, #ffe07d);
+}
+
 .eyebrow,
 .card-eyebrow {
   margin: 0;
@@ -251,6 +276,27 @@ a {
   letter-spacing: 0.1em;
   font: 700 0.75rem/1.2 'IBM Plex Mono', monospace;
   color: var(--accent-2);
+}
+
+.card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.type-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 24px;
+  padding: 0 10px;
+  border: 2px solid var(--frame);
+  border-radius: 999px;
+  background: linear-gradient(180deg, #fff3c4, #ffd86b);
+  font: 700 0.64rem/1 'Press Start 2P', 'IBM Plex Mono', monospace;
+  color: #4a3810;
 }
 
 .moves-panel,
@@ -331,6 +377,13 @@ a {
 .card h2 {
   margin: 0;
   font-size: clamp(1.1rem, 2vw, 1.3rem);
+}
+
+.attack-line {
+  margin: 0;
+  font: 700 0.7rem/1.2 'Press Start 2P', 'IBM Plex Mono', monospace;
+  letter-spacing: 0.08em;
+  color: var(--accent);
 }
 
 .card p {
@@ -610,5 +663,21 @@ a {
   }
   50% {
     transform: translateY(-6px);
+  }
+}
+
+@keyframes battleEntrance {
+  0% {
+    opacity: 0;
+    transform: translateX(40px) scale(0.65);
+    filter: saturate(1.1) brightness(1.2);
+  }
+  70% {
+    opacity: 1;
+    transform: translateX(-6px) scale(1.04);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(0.9);
   }
 }

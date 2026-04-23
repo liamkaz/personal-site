@@ -1,6 +1,8 @@
 const projects = [
   {
     type: 'Game Development',
+    badge: 'Bug / Strategy',
+    attack: 'TURN-BASED NETWORKING',
     title: 'Turn Based RPG Prototype',
     summary:
       'Designed and developed a 2–4 player multiplayer turn-based RPG prototype in Roblox Studio using Lua, created to explore scalable client-server networking and modular game architecture while establishing a fun experience to play with friends or other community members.',
@@ -9,6 +11,8 @@ const projects = [
   },
   {
     type: 'Software Product Development',
+    badge: 'Steel / Support',
+    attack: 'INTELLIGENT WORKFLOW ANALYSIS',
     title: 'AI-Powered Food Pantry Inventory & Management Platform',
     summary:
       'Designed an analysis pipeline that flags risky diffs, labels security concerns, and generates actionable feedback for student teams.',
@@ -17,6 +21,8 @@ const projects = [
   },
   {
     type: 'Class Project',
+    badge: 'Electric / Systems',
+    attack: 'GRAPH TRAVERSAL OPTIMIZATION',
     title: 'Weighted Graph CLI Route Planner in C++',
     summary:
       'Designed and implemented a weighted graph data structure in C++ to support efficient pathfinding and real-world route-planning experiments, using unordered_map for average O(1) vertex and edge lookup. ',
@@ -78,7 +84,12 @@ app.innerHTML = `
       </article>
 
       <div class="arena">
-        <div class="sprite sprite-opponent" aria-hidden="true"></div>
+        <img
+          class="sprite sprite-opponent sprite-art"
+          src="./images/pokemon-sprites/bug_sprite.png"
+          alt=""
+          aria-hidden="true"
+        />
         <div class="sprite sprite-player" aria-hidden="true"></div>
       </div>
 
@@ -93,9 +104,9 @@ app.innerHTML = `
       </article>
 
       <div class="dialogue-box">
-        <p>Liam.dev used BUILD RELIABLE SYSTEMS. It's super effective.</p>
+        <p><span class="battle-name">Liam.dev</span> used <span class="attack-name">BUILD RELIABLE SYSTEMS</span>. It's super effective.</p>
         <div class="command-grid">
-          <a class="command-btn" href="#projects">Projects</a>
+          <a class="command-btn command-btn-primary" href="#projects">Attack</a>
           <a class="command-btn" href="#moves">Skills</a>
           <a class="command-btn" href="#journey">Journey</a>
           <a class="command-btn" href="#contact">Contact</a>
@@ -129,8 +140,12 @@ app.innerHTML = `
         .map(
           (item) => `
             <article class="card">
-              <p class="card-eyebrow">${item.type}</p>
+              <div class="card-meta">
+                <p class="card-eyebrow">${item.type}</p>
+                <span class="type-badge">${item.badge}</span>
+              </div>
               <h2>${item.title}</h2>
+              <p class="attack-line">${item.attack}</p>
               <p>${item.summary}</p>
               <ul class="chip-list" aria-label="Tech stack for ${item.title}">
                 ${item.stack.map((tool) => `<li>${tool}</li>`).join('')}
