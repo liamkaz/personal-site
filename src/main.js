@@ -86,11 +86,16 @@ app.innerHTML = `
       <div class="arena">
         <img
           class="sprite sprite-opponent sprite-art"
-          src="./images/pokemon-sprites/bug_sprite.png"
+          src="./images/bug_sprite.png"
           alt=""
           aria-hidden="true"
         />
-        <div class="sprite sprite-player" aria-hidden="true"></div>
+        <img
+          class="sprite sprite-player sprite-art"
+          src="./images/python_sprite.png"
+          alt=""
+          aria-hidden="true"
+        />
       </div>
 
       <article class="status-card status-player">
