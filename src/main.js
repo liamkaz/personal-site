@@ -1,5 +1,3 @@
-import './style.css';
-
 const projects = [
   {
     type: 'Game Development',
